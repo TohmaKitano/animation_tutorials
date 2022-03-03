@@ -1,0 +1,17 @@
+/**
+ *
+ * mixin.scss
+ *
+*/
+// import
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@700&family=Permanent+Marker&display=swap');
+
+// reset
+html {
+  font-family: 'Hind', sans-serif;
+  font-size: 62.5%;
+}
+
+// variables
+$white: #ffffff;
+$black: #0f0f0f;

@@ -1,0 +1,46 @@
+/**
+ *
+ * top.scss
+ *
+*/
+
+.preloader {
+  position: absolute;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: $black;
+  z-index: 99;
+  &__percent {
+    color: $white;
+  }
+  &__bar {
+    width: 60%;
+    height: auto;
+    margin-top: 2rem;
+    &--baramount {
+      width: 1%;
+      padding: .1rem 0;
+      background: $white;
+    }
+  }
+}
+
+.container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: gray;
+  &__title {
+    font-size: 4rem;
+    text-transform: uppercase; // すべて大文字に変換
+    opacity: 0;
+  }
+}
+

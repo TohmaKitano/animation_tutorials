@@ -1,0 +1,22 @@
+/**
+ *
+ * mixin.scss
+ *
+*/
+// import
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@500&family=IBM+Plex+Sans:wght@700');
+
+// reset
+html {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+// variables
+$black: #000000;
+$white: #ffffff;
+$red: #ff0000;
+$blue: #00e2ff;
+
+$font-family-hind: 'Hind', sans-serif;

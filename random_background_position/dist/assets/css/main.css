@@ -1,0 +1,233 @@
+/**
+ *
+ * mixin.scss
+ *
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@500&family=IBM+Plex+Sans:wght@700");
+
+html {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+/***
+    The new CSS reset - version 1.4.7 (last updated 27.1.2022)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+
+*:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+
+a,
+button {
+  cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+
+img {
+  max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+
+table {
+  border-collapse: collapse;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+
+textarea {
+  white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+
+meter {
+  -webkit-appearance: revert;
+  -moz-appearance: revert;
+  appearance: revert;
+}
+
+/* fix the feature of 'hidden' attribute.
+ display:revert; revert to element instead of attribute */
+
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+ - fix for the content editable attribute will work properly. */
+
+:where([contenteditable]) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+
+:where([draggable="true"]) {
+  -webkit-user-drag: element;
+}
+
+/**
+ *
+ * top.scss
+ *
+*/
+
+.bg-sand {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url(../img/sand.png);
+  background-repeat: repeat;
+  background-position: 50%;
+  opacity: 0.08;
+}
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container__sampleBackground {
+  position: relative;
+}
+
+.container__sampleBackground--number {
+  position: absolute;
+  top: -14rem;
+  left: -4rem;
+  background: linear-gradient(120deg, #70C776 0%, #70C776 10%, #C2EFCC 20%, #E7E8CC 35%, #F5F5E4 50%, #F5F5E4 80%, #CCE3D1 100%);
+  -webkit-background-clip: text;
+  font-family: "Hind", sans-serif;
+  font-size: 16rem;
+  -webkit-text-fill-color: transparent;
+  color: rgba(0, 0, 0, 0);
+}
+
+.container__sampleBackground--text {
+  width: 21.4rem;
+  height: auto;
+  line-height: 1;
+  position: absolute;
+  top: -4rem;
+  left: 10rem;
+  background: linear-gradient(120deg, #70C776 0%, #70C776 10%, #C2EFCC 20%, #E7E8CC 35%, #F5F5E4 50%, #F5F5E4 80%, #CCE3D1 100%);
+  -webkit-background-clip: text;
+  font-family: "Hind", sans-serif;
+  font-size: 3.6rem;
+  -webkit-text-fill-color: transparent;
+  color: rgba(0, 0, 0, 0);
+}
+
+.container__sampleBackground h1 {
+  margin-bottom: 1.2rem;
+  line-height: 1;
+  font-size: 4.8rem;
+}
+
+.container__sampleBackground h1 .sampleText {
+  width: 28rem;
+  height: auto;
+  position: relative;
+}
+
+.container__sampleBackground h1 .sampleText span:nth-of-type(1) {
+  color: #000000;
+  z-index: 1;
+  position: relative;
+}
+
+.container__sampleBackground h1 .sampleText span:nth-of-type(2) {
+  color: #ff0000;
+  position: absolute;
+  top: 0;
+  left: -1px;
+}
+
+.container__sampleBackground h1 .sampleText span:nth-of-type(3) {
+  color: #00e2ff;
+  position: absolute;
+  top: 0;
+  left: 1px;
+}
+
+.container__sampleBackground p {
+  margin: 1.2rem auto;
+  line-height: 2;
+  font-size: 2.4rem;
+}
+
+.container__sampleBackground .sampleBtn {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 18rem;
+  height: 5rem;
+  background: conic-gradient(from 183deg at 50% 50%, #d6e9de 0%, #c6c6c6 5%, #e8e8e8 11%, #8a8a8a 25%, #e5c9e6 29%, #c4d8de 33%, #d29add 36%, #c8b2cc 39%, #8d8d8d 60%, #c1c1c1 76%, #c189bd 85%, #a7a786 88%, #869ab4 97%, #caded2 100%);
+  border-radius: 2.5rem;
+  position: relative;
+}
+
+.container__sampleBackground .sampleBtn:before {
+  content: "";
+  width: 17rem;
+  height: 4rem;
+  background: #000000;
+  border-radius: 2rem;
+  position: absolute;
+}
+
+.container__sampleBackground .sampleBtn__wrap {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.container__sampleBackground .sampleBtn__wrap--text {
+  position: relative;
+  line-height: 1;
+  font-family: "Hind", sans-serif;
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+/*# sourceMappingURL=maps/main.css.map */

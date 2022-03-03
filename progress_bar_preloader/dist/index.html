@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Bar Preloader in Website using CSS, Vanilla Javascript and GSAP</title>
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+<body onload="move()">
+  <div id="js-preloader" class="preloader">
+    <div id="js-percent" class="preloader__percent">1%</div>
+    <div id="js-bar" class="preloader__bar">
+      <div id="js-baramount" class="preloader__bar--baramount"></div>
+    </div>
+  </div>
+  <div id="js-container" class="container">
+    <h1 id="js-title" class="container__title">Yusuke Nakatsubo</h1>
+  </div>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
