@@ -1,0 +1,159 @@
+* {
+  box-sizing:border-box
+}
+
+// よくわからん...意味あるのか
+.sr-only {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  // clip は CSS のプロパティで、要素のどの部分が可視であるかを定義します。 
+  // clip プロパティは絶対配置された要素、つまり position:absolute または position:fixed を持つ要素だけに適用されます。
+  // rect -> rect(<top>, <right>, <bottom>, <left>) 形式の矩形の <shape> です。 
+  // <top> と <bottom> は、ボックス境界の上辺からのオフセットを表します。<right> と <left> は、ボックス境界の左辺からのオフセットを表します。これがボックスの中身となります。
+  clip:rect(0 0 0 0);
+  // clip-path は CSS のプロパティで、要素のどの部分を表示するかを設定するクリッピング領域を作ります。
+  // 具体的には、領域の内部の部分は表示され、外側の部分は非表示になります。
+  // inset() -> 内部の長方形を定義します。
+  -webkit-clip-path:inset(50%);
+  clip-path:inset(50%);
+  border:0
+}
+
+body {
+  margin:0;
+  background-color:#d3d3d3;
+  letter-spacing:.2em
+}
+
+li,ul {
+  list-style:none;
+  margin:0;
+  padding:0;
+  // vwとは、ビューポートの幅の1/100の大きさを持った単位である。
+  font-size:5vw;
+}
+
+// pre{
+//   line-height:1.5;
+//   background-color:#00008b;
+//   color:#fff;
+//   padding:1em;
+//   white-space:pre-wrap;
+//   letter-spacing:0
+// }
+
+button{
+  padding:.5em 1em;
+  // clamp() は CSS の関数で、値を上限と下限の間に制限します。
+  // clamp(MIN, VAL, MAX) は max()(MIN, min()(VAL, MAX)) と同等です。
+  font-size:clamp(16px,3vw,24px)
+}
+
+li+li {
+  // + -> 指定した要素に隣接する要素にスタイルを適用します。
+  margin-top:10vh
+}
+
+a {
+  color:#000;
+  text-decoration:none;
+  display:block
+}
+
+h1 {
+  font-size:clamp(20px,5vw,40px);
+  position:relative;
+  display:inline-block;
+  margin:0;
+  white-space:nowrap;
+  letter-spacing:.1em
+}
+
+p {
+  font-size:clamp(16px,3vw,20px);
+  margin-top:50vh
+}
+
+// .bold {
+//   font-weight:700
+// }
+
+// .text-cover{
+//   background-color:#f2ef5b;
+//   display:inline-block;
+//   margin-top:0
+// }
+
+// main {
+//   position:relative;
+//   margin-top:100px;
+//   padding:20px
+// }
+
+// main li {
+//   font-size:3vw
+// }
+
+// footer {
+//   text-align:center
+// }
+
+// --------------------
+// drawer setting
+// --------------------
+
+.header {
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1
+}
+
+.header-inner {
+  position:relative;
+  justify-content:space-between;
+  padding:20px;
+  font-size:2vw
+}
+
+.drawer,.header-inner {
+  display:flex;
+  align-items:center;
+  width:100%
+}
+
+.drawer {
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:2;
+  min-height:100vh;
+  min-height:calc(var(--vh, 1vh)*100);
+  background-color:#f2ef5b;
+  justify-content:center
+}
+
+// aria-expanded 属性は、その要素が展開可能であるか、又は展開されている状態をスクリーンリーダーに伝えます。
+// aria-expanded の値が "false" の場合は「折りたたみ」、"true" の場合は「展開」といった様にスクリーンリーダーが読み上げます。
+.drawer[aria-expanded=true] {
+  // overflow-y は CSS のプロパティで、ブロックレベル要素の内容が上下の境界からあふれた場合、どのように表示するのかを設定します。
+  overflow-y:hidden
+}
+
+.close-drawer-btn {
+  position:absolute;
+  top:20px;
+  right:20px
+}
+
+.drawer-nav-item {
+  overflow:hidden
+}
+
+.drawer-nav-item a {
+  display:block
+}
