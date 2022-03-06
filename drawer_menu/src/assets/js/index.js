@@ -1,6 +1,7 @@
 import  '../scss/style.scss';
 
-// 100vh を使わずに画面の高さいっぱいに画像を表示
+// 100vhを使わない
+// 画面の高さいっぱいに画像を表示する関数
 const setFillHeight = () => {
   // innerHeight -> ウィンドウの内部の高さをピクセル単位で返す
   const VIEW_WINDOW_HEIGHT = window.innerHeight * 0.01;
@@ -15,18 +16,42 @@ window.addEventListener('resize', () => {
   setFillHeight();
 });
 
-function bodyScrollPrevent(e){
-  var t,n=document.getElementsByTagName("body")[0],
-  i=window.navigator.userAgent.toLowerCase(),
-  o=i.indexOf("iphone")>-1||i.indexOf("ipad")>-1||i.indexOf("macintosh")>-1&&"ontouchend"in document,
-  a=window.innerWidth-document.body.clientWidth;e?(n.style.paddingRight=a+"px",
-  o?(t=-window.pageYOffset,n.style.position="fixed",
-  n.style.width="100%",
-  n.style.top=t+"px"):n.style.overflow="hidden"):e||(n.style.paddingRight="",
-  o?(t=parseInt(n.style.top.replace(/[^0-9]/g,"")),
-  n.style.position="",
-  n.style.width="",
-  n.style.top="",window.scrollTo(0,t)):n.style.overflow="")
+// 背景を固定する関数
+const bodyScrollPrevent = (e) => {
+  let currentPosition, body = document.getElementsByTagName('body')[0];
+  // ユーザーエージェントを取得
+  let getuserAgent = window.navigator.userAgent.toLowerCase();
+  let isUserAgent = getuserAgent.indexOf('iphone') > -1 || getuserAgent.indexOf('ipad') > -1 || getuserAgent.indexOf('macintosh')>-1 && 'ontouchend' in document;
+  // innerHeight -> ウィンドウの内部の高さをピクセル単位で返す
+  // clientWidth -> インライン要素や CSS のない要素ではゼロになる。それ以外では、要素の内側の寸法をピクセル単位で表す
+  // スクロールバーの幅を取得
+  let scrollBarWidth = window.innerWidth - document.body.clientWidth;
+  console.log(currentPosition);
+  if (e !== undefined) {
+    body.style.paddingRight = scrollBarWidth + 'px';
+    // iOSの場合
+    if (isUserAgent) {
+      currentPosition =- window.pageYOffset;
+      body.style.position = 'fixed';
+      body.style.width = '100%';
+      body.style.top = currentPosition + 'px';
+    } else {
+      body.style.overflow = 'hidden'
+    }
+  } else {
+    body.style.paddingRight = '';
+    // iOSの場合
+    if (isUserAgent) {
+      currentPosition = parseInt(body.style.top.replace(/[^0-9]/g,''));
+      body.style.position = '';
+      body.style.width = '';
+      body.style.top = '';
+      // 文書内の特定の組み合わせの座標までスクロールする
+      window.scrollTo(0, currentPosition);
+    } else {
+      body.style.overflow = '';
+    }
+  }
 }
 
 var drawer=document.getElementById("js-drawer"),
@@ -89,38 +114,38 @@ var pattern1=function(){
   }))
 };
 
-pattern2=function(){
-  gsap.set(drawer,{
-    yPercent:-100,visibility:"hidden",ease:Power2.easeInOut}),
-    gsap.set(".js-nav-item a",{yPercent:100});
-    var e=gsap.timeline({});
-    openButton.addEventListener("click",(function(){
-      e.reversed()?e.play():e.to(drawer,{
-        visibility:"visible",yPercent:0
-    })
-    .to(".js-nav-item a",{
-      stagger:{amount:.6},yPercent:0
-    })}))
-    ,closeButton.addEventListener("click",(function(){
-      e.reverse()
-    }))
-  },
-pattern3=function(){
-  gsap.set([drawer,".js-nav-item a"],{
-    visibility:"hidden",opacity:0
-  });
-  var e=gsap.timeline({onReverseComplete:function(){
-    gsap.set([drawer,".js-nav-item a"],{visibility:"hidden",opacity:0})
-  }});
-  openButton.addEventListener("click",(function(){
-    e.reversed()?e.play():e.to(drawer,{
-      visibility:"visible",opacity:1,ease:Power2.easeInOut
-    })
-    .to(".js-nav-item a",{
-      stagger:{amount:.6},visibility:"visible",opacity:1})
-  })),
-  closeButton.addEventListener("click",(function(){
-    e.reverse()
-  }))
-};
+// pattern2=function(){
+//   gsap.set(drawer,{
+//     yPercent:-100,visibility:"hidden",ease:Power2.easeInOut}),
+//     gsap.set(".js-nav-item a",{yPercent:100});
+//     var e=gsap.timeline({});
+//     openButton.addEventListener("click",(function(){
+//       e.reversed()?e.play():e.to(drawer,{
+//         visibility:"visible",yPercent:0
+//     })
+//     .to(".js-nav-item a",{
+//       stagger:{amount:.6},yPercent:0
+//     })}))
+//     ,closeButton.addEventListener("click",(function(){
+//       e.reverse()
+//     }))
+//   },
+// pattern3=function(){
+//   gsap.set([drawer,".js-nav-item a"],{
+//     visibility:"hidden",opacity:0
+//   });
+//   var e=gsap.timeline({onReverseComplete:function(){
+//     gsap.set([drawer,".js-nav-item a"],{visibility:"hidden",opacity:0})
+//   }});
+//   openButton.addEventListener("click",(function(){
+//     e.reversed()?e.play():e.to(drawer,{
+//       visibility:"visible",opacity:1,ease:Power2.easeInOut
+//     })
+//     .to(".js-nav-item a",{
+//       stagger:{amount:.6},visibility:"visible",opacity:1})
+//   })),
+//   closeButton.addEventListener("click",(function(){
+//     e.reverse()
+//   }))
+// };
 
