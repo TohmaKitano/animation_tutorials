@@ -18,7 +18,8 @@ window.addEventListener('resize', () => {
 
 // 背景を固定する関数
 const bodyScrollPrevent = (e) => {
-  let currentPosition, body = document.getElementsByTagName('body')[0];
+  let scrollPosition;
+  let body = document.getElementsByTagName('body')[0];
   // ユーザーエージェントを取得
   let getuserAgent = window.navigator.userAgent.toLowerCase();
   let isUserAgent = getuserAgent.indexOf('iphone') > -1 || getuserAgent.indexOf('ipad') > -1 || getuserAgent.indexOf('macintosh')>-1 && 'ontouchend' in document;
@@ -26,15 +27,14 @@ const bodyScrollPrevent = (e) => {
   // clientWidth -> インライン要素や CSS のない要素ではゼロになる。それ以外では、要素の内側の寸法をピクセル単位で表す
   // スクロールバーの幅を取得
   let scrollBarWidth = window.innerWidth - document.body.clientWidth;
-  console.log(currentPosition);
   if (e !== undefined) {
     body.style.paddingRight = scrollBarWidth + 'px';
     // iOSの場合
     if (isUserAgent) {
-      currentPosition =- window.pageYOffset;
+      scrollPosition =- window.pageYOffset;
       body.style.position = 'fixed';
       body.style.width = '100%';
-      body.style.top = currentPosition + 'px';
+      body.style.top = scrollPosition + 'px';
     } else {
       body.style.overflow = 'hidden'
     }
@@ -42,27 +42,31 @@ const bodyScrollPrevent = (e) => {
     body.style.paddingRight = '';
     // iOSの場合
     if (isUserAgent) {
-      currentPosition = parseInt(body.style.top.replace(/[^0-9]/g,''));
+      scrollPosition = parseInt(body.style.top.replace(/[^0-9]/g,''));
       body.style.position = '';
       body.style.width = '';
       body.style.top = '';
       // 文書内の特定の組み合わせの座標までスクロールする
-      window.scrollTo(0, currentPosition);
+      window.scrollTo(0, scrollPosition);
     } else {
       body.style.overflow = '';
     }
   }
 }
 
-var drawer=document.getElementById("js-drawer"),
-openButton=document.getElementById("js-open-drawer"),
-closeButton=document.getElementById("js-close-drawer"),
-isDrawerOpen=!1;
-function changeAriaExpanded(e){
-  var t=e?"true":"false";
-  drawer.setAttribute("aria-expanded",t),
-  openButton.setAttribute("aria-expanded",t),
-  closeButton.setAttribute("aria-expanded",t)
+// ドロワーを実行する処理
+const drawer       = document.getElementById('js-drawer'),
+      openButton   = document.getElementById('js-open-drawer'),
+      closeButton  = document.getElementById('js-close-drawer');
+let isDrawerOpen =!1;
+// aria-expanded 属性を切り替える関数
+const changeAriaExpanded = (e) => {
+  // console.log(e);
+  let isElementExist = e ? 'true' : 'false';
+  // setAttribute -> 指定した要素上に新しい属性を追加、または既存の属性の値を変更する。
+  drawer.setAttribute('aria-expanded', isElementExist); 
+  openButton.setAttribute('aria-expanded', isElementExist); 
+  closeButton.setAttribute('aria-expanded', isElementExist);
 }
 function changeState(e){
   e!==isDrawerOpen?(changeAriaExpanded(e),isDrawerOpen=e):
