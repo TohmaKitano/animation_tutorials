@@ -1,11 +1,19 @@
 import  '../scss/style.scss';
 
-"use strict";
+// 100vh を使わずに画面の高さいっぱいに画像を表示
+const setFillHeight = () => {
+  // innerHeight -> ウィンドウの内部の高さをピクセル単位で返す
+  const VIEW_WINDOW_HEIGHT = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh',''.concat(VIEW_WINDOW_HEIGHT,'px'));
+};
 
-var setFillHeight = function(){
-  var e =.01*window.innerHeight;
-  document.documentElement.style.setProperty("--vh","".concat(e,"px"))
-},vw=window.innerWidth;
+let viewWindowWidth = window.innerWidth;
+window.addEventListener('resize', () => {
+  if (viewWindowWidth === window.innerWidth) return;
+  // 横幅が変更されたら再描画する
+  viewWindowWidth = window.innerWidth;
+  setFillHeight();
+});
 
 function bodyScrollPrevent(e){
   var t,n=document.getElementsByTagName("body")[0],
@@ -20,10 +28,6 @@ function bodyScrollPrevent(e){
   n.style.width="",
   n.style.top="",window.scrollTo(0,t)):n.style.overflow="")
 }
-
-window.addEventListener("resize",(function(){
-  vw!==window.innerWidth&&(vw=window.innerWidth,setFillHeight())
-})),setFillHeight();
 
 var drawer=document.getElementById("js-drawer"),
 openButton=document.getElementById("js-open-drawer"),
@@ -83,7 +87,8 @@ var pattern1=function(){
   closeButton.addEventListener("click",(function(){
     e.reverse()
   }))
-},
+};
+
 pattern2=function(){
   gsap.set(drawer,{
     yPercent:-100,visibility:"hidden",ease:Power2.easeInOut}),
@@ -119,4 +124,3 @@ pattern3=function(){
   }))
 };
 
-console.log('Hello, world');
