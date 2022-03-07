@@ -18,7 +18,7 @@ window.addEventListener('resize', () => {
 
 // 背景を固定する関数
 const bodyScrollPrevent = (e) => {
-  let tmp, body = document.getElementsByTagName('body')[0];
+  let tmpPosition, body = document.getElementsByTagName('body')[0];
   // ユーザーエージェントを取得
   let getuserAgent = window.navigator.userAgent.toLowerCase();
   let isUserAgent = getuserAgent.indexOf('iphone') > -1 || getuserAgent.indexOf('ipad') > -1 || getuserAgent.indexOf('macintosh')>-1 && 'ontouchend' in document;
@@ -29,21 +29,21 @@ const bodyScrollPrevent = (e) => {
   if (e) {
     body.style.paddingRight = scrollBarWidth + 'px';
     if (isUserAgent) {
-      tmp =- window.pageYOffset,
+      tmpPosition =- window.pageYOffset,
       body.style.position = 'fixed';
       body.style.width = '100%';
-      body.style.top = t +'px';
+      body.style.top = tmpPosition +'px';
     } else {
       body.style.overflow='hidden'
     }
   } else {
     body.style.paddingRight = '';
     if (isUserAgent) {
-      tmp = parseInt(body.style.top.replace(/[^0-9]/g,'')),
+      tmpPosition = parseInt(body.style.top.replace(/[^0-9]/g,'')),
       body.style.position = '',
       body.style.width = '',
       body.style.top = '',
-      window.scrollTo(0, tmp)
+      window.scrollTo(0, tmpPosition)
     }
     else {
       body.style.overflow = ''
@@ -55,7 +55,9 @@ const bodyScrollPrevent = (e) => {
 const drawer       = document.getElementById('js-drawer'),
       openButton   = document.getElementById('js-open-drawer'),
       closeButton  = document.getElementById('js-close-drawer');
-let isDrawerOpen = !1;
+
+let isDrawerOpen = false;
+
 // aria-expanded 属性を切り替える関数
 const changeAriaExpanded = (e) => {
   let isElementExist = e ? 'true' : 'false';
@@ -65,36 +67,44 @@ const changeAriaExpanded = (e) => {
   closeButton.setAttribute('aria-expanded', isElementExist);
 }
 
-function changeState(e){
-  e!==isDrawerOpen?(changeAriaExpanded(e),isDrawerOpen=e):
-  console.log("エラー！2回以上連続で同じ状態に変更しようとしました")
-}
-function openDrawer(){
-  changeState(!0),bodyScrollPrevent(!0)
-}
-function closeDrawer(){
-  changeState(!1),bodyScrollPrevent(!1)
-}
-function onClickOpenButton(){
-  openDrawer()
-}
-function onClickCloseButton(){
-  closeDrawer()
+// 状態を監視する関数
+const changeState = (e) => {
+  if (e !== isDrawerOpen) {
+    changeAriaExpanded(e);
+    isDrawerOpen = e;
+  } else {
+    console.log('Error!');
+  }
 }
 
-bodyScrollPrevent(),
-openButton.addEventListener("click",onClickOpenButton,!1),
-closeButton.addEventListener("click",onClickCloseButton,!1),
+// ドロワーを開閉する関数
+const openDrawer = () => {
+  changeState(true);
+  bodyScrollPrevent(true);
+}
+const closeDrawer = () => {
+  changeState(false);
+  bodyScrollPrevent(false);
+}
+// ボタンをクリックする関数
+const onClickOpenButton = () => {
+  openDrawer();
+}
+const onClickCloseButton = () => {
+  closeDrawer();
+}
 
+bodyScrollPrevent();
+openButton.addEventListener('click', onClickOpenButton, false);
+closeButton.addEventListener('click', onClickCloseButton, false);
+
+// ドロワーを実行する関数
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.body.classList.contains('pattern1')) pattern1();
-});
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById("pattern1")&&pattern1();
+  if (document.getElementById('pattern')) pattern();
 });
 
-// ドロワーを実行する関数 -> GSAP
-var pattern1=function(){
+// GSAP
+var pattern=function(){
   var e=gsap.timeline();
   gsap.set(drawer,{
     xPercent:100,
