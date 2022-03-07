@@ -106,24 +106,29 @@ document.addEventListener('DOMContentLoaded', () => {
 // GSAP
 const drawerMenu = () => {
   let tl = gsap.timeline();
+  // 初期状態を指定する
   gsap.set(drawer, {
-    xPercent: 100,
     visibility: 'hidden',
-    ease: Power2.easeInOut,
+    xPercent: -100,
+    opacity: 0,
+    ease: Power3.easeOut,
   });
   openButton.addEventListener('click', () => {
     if (!tl.reversed()) {
-      // ゴールの状態を指定する
+      // 通常のアニメーション変化のようなイメージ
       tl.to(drawer, {
           visibility: 'visible',
           xPercent: 0,
+          opacity: 1,
           duration: 0.3,
         }
       )
-      // スタートの状態を指定する(ゴールの状態から元に戻る)
+      // 逆再生のアニメーション変化のようなイメージ
       .from('.js-nav-item a', {
+        // 開始時間をずらす
         stagger: { amount: 0.4 },
-        xPercent: -100,
+        // xPercent: -100,
+        opacity: 1,
       });
     } else {
       tl.play();
