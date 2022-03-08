@@ -7,7 +7,6 @@ const setFillHeight = () => {
   const VIEW_WINDOW_HEIGHT = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', ''.concat(VIEW_WINDOW_HEIGHT, 'px'));
 };
-
 let viewWindowWidth = window.innerWidth;
 window.addEventListener('resize', () => {
   if (viewWindowWidth === window.innerWidth) return;
@@ -51,103 +50,13 @@ const bodyScrollPrevent = (e) => {
   }
 }
 
-// ドロワーを実行する処理
-const drawer       = document.getElementById('js-drawer'),
-      openButton   = document.getElementById('js-open-drawer'),
-      closeButton  = document.getElementById('js-close-drawer');
-
-let isDrawerOpen = false;
-
-// aria-expanded 属性を切り替える関数
-const changeAriaExpanded = (e) => {
-  let isElementExist = e ? 'true' : 'false';
-  // setAttribute -> 指定した要素上に新しい属性を追加、または既存の属性の値を変更する。
-  drawer.setAttribute('aria-expanded', isElementExist); 
-  openButton.setAttribute('aria-expanded', isElementExist); 
-  closeButton.setAttribute('aria-expanded', isElementExist);
-}
-
-// 状態を監視する関数
-const changeState = (e) => {
-  if (e !== isDrawerOpen) {
-    changeAriaExpanded(e);
-    isDrawerOpen = e;
-  } else {
-    console.log('Error!');
-  }
-}
-
-// ドロワーを開閉する関数
-const openDrawer = () => {
-  changeState(true);
-  bodyScrollPrevent(true);
-}
-const closeDrawer = () => {
-  changeState(false);
-  bodyScrollPrevent(false);
-}
-// ボタンをクリックする関数
-const onClickOpenButton = () => {
-  openDrawer();
-}
-const onClickCloseButton = () => {
-  closeDrawer();
-}
-
 bodyScrollPrevent();
-openButton.addEventListener('click', onClickOpenButton, false);
-closeButton.addEventListener('click', onClickCloseButton, false);
 
 // ドロワーを実行する関数
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('pattern')) drawerMenu();
+  if (document.getElementById('pattern')) glMenu();
 });
 
-// GSAP
-const drawerMenu = () => {
-  let tl = gsap.timeline();
-  // 初期状態を指定する
-  gsap.set(drawer, {
-    // visibility: 'hidden',
-    display: 'none',
-    xPercent: -100,
-    opacity: 0,
-    ease: Power3.easeOut,
-  }),
-  gsap.set('.js-nav-item a', {
-    opacity: 1,
-  }),
-  gsap.set('.js-nav-item a', {
-    opacity: 1,
-  });
-  openButton.addEventListener('click', () => {
-    if (!tl.reversed()) {
-      // 通常のアニメーション変化のようなイメージ
-      tl.to(drawer, 0.5,{
-          // visibility: 'visible',
-          display: 'block',
-          xPercent: 0,
-          opacity: 1,
-          duration: 0.5,
-        }
-      )
-      // 逆再生のアニメーション変化のようなイメージ
-      .from('.js-nav-item a', {
-        // 開始時間をずらす
-        // stagger: { amount: 0.4 },
-        // xPercent: -100,
-        opacity: 0,
-      });
-    } else {
-      tl.play();
-    }
-  });
-  closeButton.addEventListener('click', () => {
-    tl.reverse();
-  });
-};
-
-// ハンバーガーメニューのテスト
 const menuWrapp    = document.querySelector('.menu-wrapp');
 const menuLeft     = document.querySelector('.menu-left');
 const menuRight    = document.querySelector('.menu-right');
@@ -155,50 +64,146 @@ const menuRight    = document.querySelector('.menu-right');
 const openBtnWrapp = document.querySelector('.head-menu');
 const openBtn      = document.querySelector('.head-menu-g');
 const openBtnBg    = document.querySelector('.head-menu-bg');
-// openBtn.addEventListener('click', () => {
-//   menuOpen()
-// }),
-openBtn.addEventListener('mouseenter', () => {
-  gsap.killTweensOf(openBtnBg),
-  gsap.to(openBtnBg,
-    .3,
-    {
-      scale:1.3,
-      ease:Power3.easeOut
-    })
-});
-openBtn.addEventListener('mouseleave', () => {
-  gsap.killTweensOf(openBtnBg),
-  gsap.to(openBtnBg,
-    .3,
-    {
-      scale:1,
-      ease:Power3.easeOut
-    })
-});
 
 const closeBtnWrapp = document.querySelector('.menu-close');
 const closeBtn      = document.querySelector('.menu-close-g');
 const closeBtnBg    = document.querySelector('.menu-close-bg');
-// closeBtn.addEventListener('click', () => {
-//   menuClose()
-// });
-closeBtn.addEventListener('mouseenter', () => {
-  gsap.killTweensOf(closeBtnBg),
-  gsap.to(closeBtnBg,
-    .3,
-    {
-      scale:1.3,
-      ease:Power3.easeOut
-    })
-}),
-closeBtn.addEventListener('mouseleave', () => {
-  gsap.killTweensOf(closeBtnBg),
-  gsap.to(closeBtnBg,
-    .3,
-    {
-      scale:1,
-      ease:Power3.easeOut
-    })
-})
+
+// GSAP
+const glMenu = () => {
+  openBtn.addEventListener('click', () => {
+    menuOpen();
+  }),
+  openBtn.addEventListener('mouseenter', () => {
+    gsap.killTweensOf(openBtnBg),
+    gsap.to(openBtnBg,
+      .3,
+      {
+        scale :1.3,
+        ease: Power3.easeOut
+      })
+  }),
+  openBtn.addEventListener('mouseleave', () => {
+    gsap.killTweensOf(openBtnBg),
+    gsap.to(openBtnBg,
+      .3,
+      {
+        scale: 1,
+        ease: Power3.easeOut
+      })
+  }),
+  closeBtn.addEventListener('click', () => {
+    menuClose();
+  });
+  closeBtn.addEventListener('mouseenter', () => {
+    gsap.killTweensOf(closeBtnBg),
+    gsap.to(closeBtnBg,
+      .3,
+      {
+        scale: 1.3,
+        ease: Power3.easeOut
+      })
+  }),
+  closeBtn.addEventListener('mouseleave', () => {
+    gsap.killTweensOf(closeBtnBg),
+    gsap.to(closeBtnBg,
+      .3,
+      {
+        scale: 1,
+        ease: Power3.easeOut
+      })
+  });
+  const menuOpen = () => {
+    gsap.killTweensOf(menuWrapp),
+    gsap.set(menuWrapp,
+      {
+        display: 'block',
+        x: '-100%'
+      }
+    ),
+    gsap.to(menuWrapp,
+      .5,
+      {
+        x: '0%',
+        ease: Power3.easeIn,
+        onComplete: function(){
+          gsap.killTweensOf(closeBtnWrapp),
+          gsap.to(closeBtnWrapp,
+            .4,
+            {
+              opacity: 1,
+              ease: Power3.easeOut
+            }
+          )
+        }
+      }
+    )
+    gsap.killTweensOf(menuLeft),
+    gsap.set(menuLeft,
+      {
+        opacity: 0
+      }
+    ),
+    gsap.to(menuLeft,
+      .8,
+      {
+        delay: .6,
+        opacity: 1,
+        ease: Power3.easeOut
+      }
+    ),
+    gsap.killTweensOf(menuRight),
+    gsap.set(menuRight,
+      {
+        opacity: 0
+      }
+    ),
+    gsap.to(menuRight,
+      .8,
+      {
+        delay: .7,
+        opacity: 1,
+        ease: Power3.easeOut
+      }
+    )
+  };
+  const menuClose = () => {
+    gsap.killTweensOf(closeBtnWrapp),
+    gsap.to(closeBtnWrapp,
+      .3,
+      {
+        opacity: 0,
+        ease: Power3.easeOut
+      }
+    ),
+    gsap.killTweensOf(menuLeft),
+    gsap.to(menuLeft,
+      .4,
+      {
+        opacity: 0,
+        ease: Power3.easeOut
+      }
+    ),
+    gsap.killTweensOf(menuRight),
+    gsap.to(menuRight,
+      .4,
+      {
+        opacity: 0,
+        ease: Power3.easeOut
+      }
+    ),
+    gsap.killTweensOf(menuWrapp),
+    gsap.to(menuWrapp,
+      .4,
+      {
+        delay: .2,
+        x: '-100%',
+        ease:Power2.easeIn,
+        onComplete: function(){
+          menuWrapp.style.display = 'none'
+        }
+      }
+    )
+  }
+}
 
