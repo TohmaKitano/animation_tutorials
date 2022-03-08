@@ -34,7 +34,7 @@ const bodyScrollPrevent = (e) => {
       body.style.width = '100%';
       body.style.top = tmpPosition +'px';
     } else {
-      body.style.overflow='hidden'
+      body.style.overflow = 'hidden'
     }
   } else {
     body.style.paddingRight = '';
@@ -108,27 +108,35 @@ const drawerMenu = () => {
   let tl = gsap.timeline();
   // 初期状態を指定する
   gsap.set(drawer, {
-    visibility: 'hidden',
+    // visibility: 'hidden',
+    display: 'none',
     xPercent: -100,
     opacity: 0,
     ease: Power3.easeOut,
+  }),
+  gsap.set('.js-nav-item a', {
+    opacity: 1,
+  }),
+  gsap.set('.js-nav-item a', {
+    opacity: 1,
   });
   openButton.addEventListener('click', () => {
     if (!tl.reversed()) {
       // 通常のアニメーション変化のようなイメージ
-      tl.to(drawer, {
-          visibility: 'visible',
+      tl.to(drawer, 0.5,{
+          // visibility: 'visible',
+          display: 'block',
           xPercent: 0,
           opacity: 1,
-          duration: 0.3,
+          duration: 0.5,
         }
       )
       // 逆再生のアニメーション変化のようなイメージ
       .from('.js-nav-item a', {
         // 開始時間をずらす
-        stagger: { amount: 0.4 },
+        // stagger: { amount: 0.4 },
         // xPercent: -100,
-        opacity: 1,
+        opacity: 0,
       });
     } else {
       tl.play();
@@ -139,37 +147,58 @@ const drawerMenu = () => {
   });
 };
 
-// pattern2=function(){
-//   gsap.set(drawer,{
-//     yPercent:-100,visibility:"hidden",ease:Power2.easeInOut}),
-//     gsap.set(".js-nav-item a",{yPercent:100});
-//     var e=gsap.timeline({});
-//     openButton.addEventListener("click",(function(){
-//       e.reversed()?e.play():e.to(drawer,{
-//         visibility:"visible",yPercent:0
-//     })
-//     .to(".js-nav-item a",{
-//       stagger:{amount:.6},yPercent:0
-//     })}))
-//     ,closeButton.addEventListener("click",(function(){
-//       e.reverse()
-//     }))
-//   },
-// pattern3=function(){
-//   gsap.set([drawer,".js-nav-item a"],{
-//     visibility:"hidden",opacity:0
-//   });
-//   var e=gsap.timeline({onReverseComplete:function(){
-//     gsap.set([drawer,".js-nav-item a"],{visibility:"hidden",opacity:0})
-//   }});
-//   openButton.addEventListener("click",(function(){
-//     e.reversed()?e.play():e.to(drawer,{
-//       visibility:"visible",opacity:1,ease:Power2.easeInOut
-//     })
-//     .to(".js-nav-item a",{
-//       stagger:{amount:.6},visibility:"visible",opacity:1})
-//   })),
-//   closeButton.addEventListener("click",(function(){
-//     e.reverse()
-//   }))
-// };
+// ハンバーガーメニューのテスト
+const menuWrapp    = document.querySelector('.menu-wrapp');
+const menuLeft     = document.querySelector('.menu-left');
+const menuRight    = document.querySelector('.menu-right');
+
+const openBtnWrapp = document.querySelector('.head-menu');
+const openBtn      = document.querySelector('.head-menu-g');
+const openBtnBg    = document.querySelector('.head-menu-bg');
+// openBtn.addEventListener('click', () => {
+//   menuOpen()
+// }),
+openBtn.addEventListener('mouseenter', () => {
+  gsap.killTweensOf(openBtnBg),
+  gsap.to(openBtnBg,
+    .3,
+    {
+      scale:1.3,
+      ease:Power3.easeOut
+    })
+});
+openBtn.addEventListener('mouseleave', () => {
+  gsap.killTweensOf(openBtnBg),
+  gsap.to(openBtnBg,
+    .3,
+    {
+      scale:1,
+      ease:Power3.easeOut
+    })
+});
+
+const closeBtnWrapp = document.querySelector('.menu-close');
+const closeBtn      = document.querySelector('.menu-close-g');
+const closeBtnBg    = document.querySelector('.menu-close-bg');
+// closeBtn.addEventListener('click', () => {
+//   menuClose()
+// });
+closeBtn.addEventListener('mouseenter', () => {
+  gsap.killTweensOf(closeBtnBg),
+  gsap.to(closeBtnBg,
+    .3,
+    {
+      scale:1.3,
+      ease:Power3.easeOut
+    })
+}),
+closeBtn.addEventListener('mouseleave', () => {
+  gsap.killTweensOf(closeBtnBg),
+  gsap.to(closeBtnBg,
+    .3,
+    {
+      scale:1,
+      ease:Power3.easeOut
+    })
+})
+

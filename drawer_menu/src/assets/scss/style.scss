@@ -34,7 +34,9 @@ li,ul {
   margin:0;
   padding:0;
   // vwとは、ビューポートの幅の1/100の大きさを持った単位である。
-  font-size:5vw;
+  // font-size:5vw;
+  font-size: 10vw;
+  line-height: 1;
 }
 
 // pre{
@@ -55,7 +57,8 @@ button{
 
 li+li {
   // + -> 指定した要素に隣接する要素にスタイルを適用します。
-  margin-top:10vh
+  // margin-top:10vh
+  margin-top:  1vh
 }
 
 a {
@@ -118,7 +121,7 @@ p.dummy { margin-top: 0; }
   position:relative;
   justify-content:space-between;
   padding:20px;
-  font-size:2vw
+  font-size:5vw;
 }
 
 .drawer,.header-inner {
@@ -156,5 +159,191 @@ p.dummy { margin-top: 0; }
 }
 
 .drawer-nav-item a {
-  display:block
+  display:block;
+  font-weight: 700
 }
+
+// --------------------
+// menu setting
+// --------------------
+
+body {
+  position: relative;
+}
+// .head-logo{
+// 	position:absolute;
+// 	width:84px; height:100px;
+// 	top:10px; left:10px;
+// 	background-image:url(../img/head_logo.png);
+// 	background-size:contain;
+// }
+.head-menu{
+	position:absolute;
+	width:48px; height:48px;
+	top:36px; right:36px;
+}
+.head-menu-bg{
+	position:absolute;
+	width:100%; height:100%;
+	top:0; left:0;
+	background-image:url(../img/head_menu_bg.png);
+	background-size:contain;
+}
+.head-menu-g{
+	position:absolute;
+	width:100%; height:100%;
+	top:0; left:0;
+	background-image:url(../img/head_menu.png);
+	background-size:contain;
+	cursor:pointer;
+}
+@media screen and (max-width:900px){
+	// .head-logo{
+	// 	width:59px; height:70px;
+	// 	top:10px; left:10px;
+	// }
+	.head-menu{
+		top:20px; right:20px;
+	}
+}
+
+.menu-wrapp{
+  position:fixed;
+  width:100%; height:100vh;
+  overflow:hidden;
+  display:none;
+  background-image:url(../img/sand_w.png);
+  background-repeat:repeat;
+  background-position:50%;
+  background-attachment:fixed;
+  backface-visibility:hidden;
+}
+.menu-scroll{
+  width:100%; height:100%;
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling: touch;
+  /*overscroll-behavior: none;*/
+}
+.menu-content{
+  position:relative;
+  width:100%; height:100%;
+  min-height:100%;
+  padding-top:60px;
+  padding-bottom:80px;
+  box-sizing:border-box;
+}
+.menu-set{
+  position:relative;
+  display:flex;
+  align-items: center;
+  width:900px; height:100%;
+  margin-left:auto; margin-right:auto;
+}
+.menu-left{
+  width:642px;
+  text-align:center;
+  font-size:0;
+}
+a.menu-large{
+  display:block;
+  width:520px; height:100px;
+  text-decoration:none;
+  font-size:100px;
+  color:#000;
+  transition:0.2s;
+}
+a.menu-large:hover{
+  text-decoration:none;
+  color:#838383;
+}
+a.menu-large:visited{
+  text-decoration:none;
+}
+.menu-right{
+  width:258px;
+  text-align:center;
+}
+//
+.menu-close{
+  position:absolute;
+  width:48px; height:48px;
+  top:36px; right:36px;
+  opacity:0;
+}
+.menu-close-bg{
+  position:absolute;
+  width:100%; height:100%;
+  top:0; left:0;
+  background-image:url(../img/head_menu_bg.png);
+  background-size:contain;
+}
+.menu-close-g{
+  position:absolute;
+  width:100%; height:100%;
+  top:0; left:0;
+  background-image:url(../img/menu_close.png);
+  background-size:contain;
+  cursor:pointer;
+}
+a.menu-link{
+  text-decoration:none;
+  opacity:0.55;
+  transition:0.2s;
+}
+a.menu-link:hover{
+  text-decoration:none;
+  opacity:1;
+}
+a.menu-link:visited{
+  text-decoration:none;
+  opacity:0.55;
+}
+// @media screen and (max-width:1100px){
+//   .menu-content{
+//   padding-top:0px;
+//   padding-bottom:100px;
+//   }
+// }
+// @media screen and (max-width:900px){
+//   .menu-content{
+//     width:100%;
+//     padding-top:120px;
+//     padding-bottom:140px;
+//   }
+//   .menu-set{
+//     width:100%;
+//     flex-direction: column;
+//   }
+//   .menu-left{
+//     width:100%;
+//   }
+//   a.menu-large{
+//     width:100%; height:76px;
+//     text-align:center;
+//     font-size:76px;
+//   }
+//   .menu-right{
+//     width:100%;
+//     margin-top:80px;
+//   }
+//   .menu-close{
+//     top:20px; right:20px;
+//   }
+//   a.menu-link:hover{
+//     opacity:0.55;
+//   }
+// }
+// @media screen and (max-width:500px){
+//   .menu-content{
+//     height:auto;
+//     min-height:auto;
+//   }
+//   .menu-set{
+//     height:auto;
+//   }
+//   a.menu-large{
+//     height:18.5vw;
+//     font-size:18.5vw;
+//   }
+// }
