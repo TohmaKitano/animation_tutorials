@@ -54,7 +54,7 @@ bodyScrollPrevent();
 
 // ドロワーを実行する関数
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('pattern')) glMenu();
+  if (document.getElementById('drawer-menu')) glMenu();
 });
 
 const menuWrapp    = document.querySelector('.menu-wrapp');

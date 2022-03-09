@@ -5,43 +5,42 @@
     <title>GSAP | Drawer Menu</title>
     <link rel="stylesheet" href="./assets/css/style.css">
   </head>
-  <body id="pattern">
-    <header class="header">
-			<div class="header-inner">
-				<h1>GSAP | Drawer Menu</h1>
-        <div id="js-open-drawer" class="head-menu open-drawer-btn" aria-controls="js-drawer" aria-expanded="false">
-          <div class="head-menu-bg"></div>
-          <div class="head-menu-g"></div>
+  <body>
+    <div id="drawer-menu">
+      <header class="header">
+        <div class="header__inner">
+          <div class="header__inner--logo">
+            <h1>GSAP | Drawer Menu</h1>
+          </div>
+          <div class="header__inner--menu head-menu">
+            <div class="head-menu-bg"></div>
+            <div class="head-menu-g"></div>
+          </div>
         </div>
-				<!-- <button type="button" id="js-open-drawer" class="open-drawer-btn" aria-controls="js-drawer" aria-expanded="false">
-          OPEN
-          <span class="sr-only">メニューを開く</span>
-				</button> -->
-			</div>
-		</header>
-		<div id="js-drawer" class="drawer menu-wrapp" aria-expanded="false">
-			<div class="menu-scroll">
-        <div class="menu-content">
-          <div class="menu-set">
-            <div class="menu-left">
-              <a href="#">Pattern 01</a>
-              <a href="#">Pattern 02</a>
-              <a href="#">Pattern 03</a>
-              <a href="#">Pattern 04</a>
-            </div>
-            <div class="menu-right">
+     </header>
+     <div class="glMenu menu-wrapp">
+        <div class="glMenu__scroll">
+          <div class="glMenu__scroll--content menu-content">
+            <div class="menu-set">
+              <div class="menu-left">
+                <a href="#" class="menu-large">Pattern 01</a>
+                <a href="#" class="menu-large">Pattern 02</a>
+                <a href="#" class="menu-large">Pattern 03</a>
+                <a href="#" class="menu-large">Pattern 04</a>
+              </div>
+              <div class="menu-right">
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="menu-close" id="js-close-drawer" class="menu-close close-drawer-btn" aria-controls="js-drawer" aria-expanded="false">
-        <div class="menu-close-bg"></div>
-        <div class="menu-close-g"></div>
-      </div>
-			<!-- <button type="button" id="js-close-drawer" class="close-drawer-btn" aria-controls="js-drawer" aria-expanded="false">CLOSE<span class="sr-only">メニューを閉じる</span></button> -->
-		</div>
+        <div class="menu-close" id="js-close-drawer" class="menu-close close-drawer-btn">
+          <div class="menu-close-bg"></div>
+          <div class="menu-close-g"></div>
+        </div>
+     </div>
+    </div>
 
-    <div>
+    <div class="dummy-box">
       <p class="dummy">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <p class="dummy">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <p class="dummy">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
