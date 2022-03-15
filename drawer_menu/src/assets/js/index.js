@@ -15,8 +15,8 @@ window.addEventListener('resize', () => {
   setFillHeight();
 });
 
-// 背景を固定する関数
-const bodyScrollPrevent = (e) => {
+// 背景を固定する関数 -> 動いていない
+const bodyScrollPrevent = (flag) => {
   let tmpPosition, body = document.getElementsByTagName('body')[0];
   // ユーザーエージェントを取得
   let getuserAgent = window.navigator.userAgent.toLowerCase();
@@ -25,7 +25,7 @@ const bodyScrollPrevent = (e) => {
   // clientWidth -> インライン要素や CSS のない要素ではゼロになる。それ以外では、要素の内側の寸法をピクセル単位で表す
   // スクロールバーの幅を取得
   let scrollBarWidth = window.innerWidth - document.body.clientWidth;
-  if (e) {
+  if (flag) {
     body.style.paddingRight = scrollBarWidth + 'px';
     if (isUserAgent) {
       tmpPosition =- window.pageYOffset,
@@ -35,7 +35,7 @@ const bodyScrollPrevent = (e) => {
     } else {
       body.style.overflow = 'hidden'
     }
-  } else {
+  } else if (!flag) {
     body.style.paddingRight = '';
     if (isUserAgent) {
       tmpPosition = parseInt(body.style.top.replace(/[^0-9]/g,'')),
@@ -73,6 +73,7 @@ const closeBtnBg    = document.querySelector('.menu-close-bg');
 const glMenu = () => {
   openBtn.addEventListener('click', () => {
     menuOpen();
+    bodyScrollPrevent(true);
   }),
   openBtn.addEventListener('mouseenter', () => {
     gsap.killTweensOf(openBtnBg),
@@ -94,6 +95,7 @@ const glMenu = () => {
   }),
   closeBtn.addEventListener('click', () => {
     menuClose();
+    bodyScrollPrevent(false);
   });
   closeBtn.addEventListener('mouseenter', () => {
     gsap.killTweensOf(closeBtnBg),
