@@ -15,7 +15,7 @@ window.addEventListener('resize', () => {
   setFillHeight();
 });
 
-// 背景を固定する関数 -> 動いていない
+// 背景を固定する関数
 const bodyScrollPrevent = (flag) => {
   let tmpPosition, body = document.getElementsByTagName('body')[0];
   // ユーザーエージェントを取得
