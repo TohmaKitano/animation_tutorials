@@ -10,7 +10,7 @@ export const getters = {
 
 export const mutations = {
   endLoding(state) {
-    state.loading = false
+    state.loading = this.getOptions
   }
 }
 

@@ -1,5 +1,4 @@
 {
-  "name": "loadingAnimation_on_NuxtJs",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -17,6 +16,8 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "nuxt-gsap-module": "^1.6.0"
+    "node-sass": "^6.0.1",
+    "nuxt-gsap-module": "^1.6.0",
+    "sass-loader": "^10.2.1"
   }
 }
