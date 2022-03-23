@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+h1, h2, h3, h4, h5, h6, p {
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  font-size: 120px;
+}
+
+h2 {
+  font-size: 96px;
+}
+
+h3 {
+  font-size: 72px;
+}
+
+h4 {
+  font-size: 56px;
+}
+
+h5 {
+  font-size: 48px;
+}
+
+h6 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.container {
+  width: 960px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.block {
+  margin-bottom: 120px;
+}
+
+.heading {
+  display: inline-block;
+  backface-visibility: hidden;
+  transition: all .8s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+  transition-property: transform, opacity, -webkit-transform;
+  -webkit-transform: translateX(150px);
+  transform: translateX(150px);
+  // opacity: 0;
+}
+
+.heading-visible {
+  transform: translateX(100px);
+  opacity: 1;
+}
