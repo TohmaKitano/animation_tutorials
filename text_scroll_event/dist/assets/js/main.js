@@ -1,0 +1,2 @@
+!function(){"use strict";gsap.registerPlugin(ScrollTrigger),ScrollTrigger.create({trigger:".blockSecondary",start:"top center",end:"bottom center",toggleClass:{targets:".headingSecondary",className:"heading-visible"},once:!0})}();
+//# sourceMappingURL=main.js.map
