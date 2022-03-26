@@ -1,2 +1,2 @@
-!function(){"use strict";gsap.registerPlugin(ScrollTrigger),ScrollTrigger.create({trigger:".blockSecondary",start:"top center",end:"bottom center",toggleClass:{targets:".headingSecondary",className:"heading-visible"},once:!0})}();
+!function(){"use strict";window.addEventListener("DOMContentLoaded",(function(){var e=document.querySelector(".titleeffect");if(e.classList.contains("titleeffect-visible"))e.classList.add("titleeffect-animated"),e.find(".titleeffect__clone").remove(),e.find(".titleeffect__cover").remove();else{var t=e.textContent,c='<span class="titleeffect__clone">'.concat(t,"</span>"),n='<span class="titleeffect__cover">'.concat(t,"</span>");console.log(c),console.log(n)}}),!1)}();
 //# sourceMappingURL=main.js.map

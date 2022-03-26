@@ -1,11 +1,18 @@
 import  '../scss/style.scss';
 
-gsap.registerPlugin(ScrollTrigger);
-
-ScrollTrigger.create({
-  trigger: '.blockSecondary', //アニメーションが始まるトリガーとなる要素
-  start: 'top center',
-  end: 'bottom center', 
-  toggleClass: {targets: ".headingSecondary", className: "heading-visible"}, //クラスをつけたり、外したりできる
-  once: true
-});
+window.addEventListener('DOMContentLoaded', () => {
+  let $elem = document.querySelector('.titleeffect');
+  let isVisible = $elem.classList.contains('titleeffect-visible');
+  if (isVisible) {
+    $elem.classList.add('titleeffect-animated');
+    $elem.find(".titleeffect__clone").remove();
+    $elem.find(".titleeffect__cover").remove();
+  }
+  else {
+    let text = $elem.textContent;
+    let clone = '<span class="titleeffect__clone">'.concat(text, '</span>');
+    let cover = '<span class="titleeffect__cover">'.concat(text, '</span>');
+    console.log(clone);
+    console.log(cover);
+  }
+}, false)
