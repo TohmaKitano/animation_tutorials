@@ -1,58 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
-h1, h2, h3, h4, h5, h6, p {
-  font-family: 'Lato', sans-serif;
+.js-demo-section {
+  font-size: 24px;
+  font-weight: bold;
 }
 
-h1 {
-  font-size: 120px;
-}
-
-h2 {
-  font-size: 96px;
-}
-
-h3 {
-  font-size: 72px;
-}
-
-h4 {
-  font-size: 56px;
-}
-
-h5 {
-  font-size: 48px;
-}
-
-h6 {
-  font-size: 32px;
-}
-
-p {
-  font-size: 16px;
-}
-
-.container {
-  width: 960px;
-  height: auto;
-  margin: 0 auto;
-}
-
-.block {
-  margin-bottom: 120px;
-}
-
-.heading {
-  display: inline-block;
+.titleeffect {
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-transition: all .8s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
   transition: all .8s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
   transition-property: transform, opacity, -webkit-transform;
-  -webkit-transform: translateX(150px);
-  transform: translateX(150px);
-  // opacity: 0;
+  -webkit-transform: translateX(1.5rem);
+  transform: translateX(1.5rem);
+  display: inline-block;
+  position: relative;
+  opacity: 0;
 }
 
-.heading-visible {
-  transform: translateX(100px);
+.titleeffect__df {
+  display: inline-block;
+  opacity: 0;
+}
+
+.titleeffect__clone,.titleeffect__cover {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%
+}
+
+.titleeffect__cover {
+  opacity: 0.25;
+}
+
+.titleeffect-visible{
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.titleeffect-animated .titleeffect__df {
   opacity: 1;
 }
