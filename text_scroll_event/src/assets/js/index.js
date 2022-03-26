@@ -20,4 +20,32 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   console.log($elem);
 
+  if (!isVisible) {
+    let $clone = document.querySelector('.titleeffect__clone');
+    let $cover = document.querySelector('.titleeffect__cover');
+    console.log($clone);
+    let elemHeight = $elem.offsetHeight;
+    let elemWidth = $elem.offsetWidth;
+    let n = "rect(0px 0px ".concat(elemHeight, "px 0px)");
+    let r = "rect(0px ".concat(elemWidth, "px ").concat(elemHeight, "px 0px)");
+    let o = "rect(0px ".concat(elemWidth, "px ").concat(elemHeight, "px 0px)");
+    let s = "rect(0px ".concat(elemWidth, "px ").concat(elemHeight, "px ").concat(elemWidth, "px)");
+    $clone.style.clip = n;
+    $cover.style.clip = o;
+    $elem.classList.add('titleeffect-visible');
+    gsap.to($clone, 1.5, {
+      clip: r,
+      ease: Power3.easeOut
+    })
+    gsap.to($cover, 1.5, {
+      clip: s,
+      ease: Power3.easeOut,
+      onComplete:function(){
+        $elem.classList.add('titleeffect-animated'),
+        $clone.remove(),
+        $cover.remove()
+      }
+    })
+  }
+
 }, false)
