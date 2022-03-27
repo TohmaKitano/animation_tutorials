@@ -5,7 +5,7 @@
   font-weight: bold;
 }
 
-.titleeffect {
+.titEffect {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-transition: all .8s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
@@ -21,12 +21,12 @@
   opacity: 0;
 }
 
-.titleeffect__df {
+.titEffect__detail {
   display: inline-block;
   opacity: 0;
 }
 
-.titleeffect__clone,.titleeffect__cover {
+.titEffect__clone,.titEffect__cover {
   display: block;
   overflow: hidden;
   position: absolute;
@@ -35,16 +35,16 @@
   width: 100%
 }
 
-.titleeffect__cover {
+.titEffect__cover {
   opacity: 0.25;
 }
 
-.titleeffect-visible{
+.titEffect-visible{
   -webkit-transform: translateX(0);
   transform: translateX(0);
   opacity: 1;
 }
 
-.titleeffect-animated .titleeffect__df {
+.titEffect-animated .titEffect__detail {
   opacity: 1;
 }
