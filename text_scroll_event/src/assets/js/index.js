@@ -4,9 +4,6 @@ window.addEventListener('DOMContentLoaded', () => {
   // Get DOM Element
   let titEffect    = document.querySelector('.titEffect');
   let isTitVisible = titEffect.classList.contains('titEffect-visible');
-    
-  creareNewTitEffectContent(isTitVisible, titEffect);
-  animateNewTitEffectContent(isTitVisible, titEffect);
 
   // Create New DOM Content
   function creareNewTitEffectContent(bool, el) {
@@ -21,6 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
           titEffectCover       = '<span class="titEffect__cover">'.concat(titEffectContent, '</span>'),
           titEffectDuplication = '<span class="titEffect__detail">'.concat(titEffectContent, '</span>');
       el.innerHTML = titEffectDuplication.concat(titEffectClone).concat(titEffectCover);
+      animateNewTitEffectContent(isTitVisible, titEffect);
     }
   }
 
@@ -41,19 +39,11 @@ window.addEventListener('DOMContentLoaded', () => {
       gsap.to(newTitEffectClone, 1.5, {
         clip: archivedCloneRect,
         ease: Power3.easeOut,
-        scrollTrigger: {
-          trigger: titEffect,
-          start: 'top center'
-        }
       })
       gsap.to(newTitEffectCover, 1.5, {
         clip: archivedCoverRect,
         ease: Power3.easeOut,
-        scrollTrigger: {
-          trigger: titEffect,
-          start: 'top center'
-        },
-        onComplete:function() {
+        onComplete: function() {
           titEffect.classList.add('titEffect-animated'),
           newTitEffectClone.remove(),
           newTitEffectCover.remove()
@@ -61,5 +51,13 @@ window.addEventListener('DOMContentLoaded', () => {
       })
     }
   }
+
+  ScrollTrigger.create({
+    trigger: '.js-demo-section',
+    start: 'top 90%',
+    markers: true,
+    onEnter: () => creareNewTitEffectContent(isTitVisible, titEffect),
+    once: true,
+  });
 
 }, false)
