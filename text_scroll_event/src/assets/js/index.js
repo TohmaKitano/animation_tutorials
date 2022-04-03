@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
       let titEffectContent     = el.textContent,
           titEffectClone       = '<span class="titEffect__clone">'.concat(titEffectContent, '</span>'),
           titEffectCover       = '<span class="titEffect__cover">'.concat(titEffectContent, '</span>'),
-          titEffectDuplication = '<span class="titEffect__detail">'.concat(titEffectContent, '</span>');
+          titEffectDuplication = '<span class="titEffect__detail" class="test">'.concat(titEffectContent, '</span>');
       el.innerHTML = titEffectDuplication.concat(titEffectClone).concat(titEffectCover);
       animateNewTitEffectContent(isTitVisible, titEffect);
     }
