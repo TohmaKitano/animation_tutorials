@@ -1,7 +1,4 @@
-// console.log('Hello, World');
-
-function initOciliator(remove) {
-
+const initOscillator = (remove) => {
 
   if(!remove) {
 
@@ -193,9 +190,9 @@ function initOciliator(remove) {
           if (!ctx.running) return;
 
           ctx.globalCompositeOperation = 'source-over';
-          ctx.fillStyle = '#1D1D1D';
+          ctx.fillStyle = '#ffffff';
           ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-          ctx.globalCompositeOperation = 'lighter';
+          ctx.globalCompositeOperation = 'xor';
           ctx.strokeStyle = 'hsla(346,98%,56%,0.25)';
           ctx.lineWidth = 1;
 
@@ -360,4 +357,4 @@ function initOciliator(remove) {
   }
 }
 
-export default initOciliator
+export default initOscillator
