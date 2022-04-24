@@ -25,11 +25,10 @@ window.addEventListener('DOMContentLoaded', () => {
       el.find('.titEffect__cover').remove();
     }
     else {
-      let titEffectContent     = el.textContent,
-          titEffectClone       = '<span class="titEffect__clone">'.concat(titEffectContent, '</span>'),
-          titEffectCover       = '<span class="titEffect__cover">'.concat(titEffectContent, '</span>'),
-          titEffectDuplication = '<span class="titEffect__detail">'.concat(titEffectContent, '</span>');
-      el.innerHTML = titEffectDuplication.concat(titEffectClone).concat(titEffectCover);
+      let titEffectClone       = `<span class="titEffect__clone">${el.textContent}</span>`,
+          titEffectCover       = `<span class="titEffect__cover">${el.textContent}</span>`,
+          titEffectDuplication = `<span class="titEffect__detail">${el.textContent}</span>`;
+      el.innerHTML = `${titEffectDuplication}${titEffectClone}${titEffectCover}`;
       animateNewTitEffectContent(bool, el);
     }
   }
@@ -41,10 +40,10 @@ window.addEventListener('DOMContentLoaded', () => {
           newTitEffectCover = document.querySelector('.titEffect__cover');
       let elemHeight = el.offsetHeight,
           elemWidth  = el.offsetWidth;
-      let initialCloneRect  = 'rect(0px 0px '.concat(elemHeight, 'px 0px)'),
-          archivedCloneRect = 'rect(0px '.concat(elemWidth, 'px ').concat(elemHeight, 'px 0px)'),
-          initialCoverRect  = 'rect(0px '.concat(elemWidth, 'px ').concat(elemHeight, 'px 0px)'),
-          archivedCoverRect = 'rect(0px '.concat(elemWidth, 'px ').concat(elemHeight, 'px ').concat(elemWidth, "px)");
+      let initialCloneRect  = `rect(0px 0px ${elemHeight}px 0px)`,
+          archivedCloneRect = `rect(0px ${elemWidth}px ${elemHeight}px 0px`,
+          initialCoverRect  = `rect(0px ${elemWidth}px ${elemHeight}px 0px`,
+          archivedCoverRect = `rect(0px ${elemWidth}px ${elemHeight}px ${elemWidth}px`;
       newTitEffectClone.style.clip = initialCloneRect;
       newTitEffectCover.style.clip = initialCoverRect;
       el.classList.add('titEffect-visible');
