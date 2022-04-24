@@ -18,5 +18,4 @@ window.addEventListener('DOMContentLoaded', (e) => {
     wheelZoom: false,
   }
   TagCanvas.Start('myCanvas', '', options);
-
 }, false);
