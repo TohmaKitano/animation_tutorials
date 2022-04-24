@@ -6,6 +6,61 @@
     <link rel="stylesheet" href="./assets/css/style.css">
   </head>
   <body>
+    <h1>TagCanvas example page</h1>
+    <div id="myCanvasContainer">
+      <canvas width="500" height="500" id="myCanvas">
+        <ul>
+          <li><a data-weight="25" href="https://en.wikipedia.org/wiki/HTML" target="_blank">HTML</a></li>
+          <li><a data-weight="25" href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets" target="_blank">CSS</a></li>
+          <li><a data-weight="25" href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">ES5/ES6</a></li>
+          <li><a data-weight="25" href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">TypeScript</a></li>
+          <li><a data-weight="24" href="https://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST</a></li>
+          <li><a data-weight="14" href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a></li>
+          <li><a data-weight="13" href="https://en.wikipedia.org/wiki/XML" target="_blank">GSAP</a></li>
+          <li><a data-weight="14" href="https://en.wikipedia.org/wiki/Data_science" target="_blank">Data Science</a></li>
+          <li><a data-weight="26" href="https://en.wikipedia.org/wiki/WordPress" target="_blank">Wordpress</a></li>
+          <li><a data-weight="26" href="https://en.wikipedia.org/wiki/PHP" target="_blank">PHP</a></li>
+          <li><a data-weight="26" href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank">Python</a></li>
+          <li><a data-weight="21" href="https://en.wikipedia.org/wiki/Node.js" target="_blank">Node JS</a></li>
+          <li><a data-weight="17" href="https://en.wikipedia.org/wiki/Git" target="_blank">Git</a></li>
+          <li><a data-weight="17" href="" target="_blank">_lodash</a></li>
+          <li><a data-weight="23" href="https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)" target="_blank">Bootstrap</a></li>
+          <li><a data-weight="15" href="https://en.wikipedia.org/wiki/Sass_(stylesheet_language)" target="_blank">SASS</a></li>
+          <li><a data-weight="24" href="https://reactjs.org/" target="_blank">ReactJS</a></li>
+          <li><a data-weight="12" href="https://en.wikipedia.org/wiki/JQuery" target="_blank">jQuery</a></li>
+          <li><a data-weight="26" href="http://mongoosejs.com/" target="_blank">SQl</a></li>
+          <li><a data-weight="19" href="http://gulpjs.com/" target="_blank">Gulp</a></li>
+          <li><a data-weight="19" href="https://www.npmjs.com/" target="_blank">npm</a></li>
+          <li><a data-weight="19" href="https://en.wikipedia.org/wiki/BEM" target="_blank">BEM</a></li>
+        </ul>
+      </canvas>
+    </div>
+
+    <script src="./assets/js/tagcanvas.js"></script>
+    <script type="text/javascript">
+      window.addEventListener('load', (e) => {
+        let options = {
+          textColour : '#08FDD8',
+          outlineThickness : 0.5,
+          outlineColour : '#FE0853',
+          maxSpeed : 0.06,
+          freezeActive:true,
+          shuffleTags:true,
+          shape:'sphere',
+          zoom:0.8,
+          noSelect:true,
+          textFont:null,
+          pinchZoom:true,
+          wheelZoom:false,
+          freezeDecel:true,
+          fadeIn:3000,
+          initial: [0.3,-0.1],
+          depth : 1.1
+        }
+        TagCanvas.Start('myCanvas', '', options);
+
+      }, false);
+    </script>
     <script src="./assets/js/vendor.js"></script>
     <script src="./assets/js/main.js"></script>
   </body>
