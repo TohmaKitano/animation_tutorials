@@ -1,2 +1,2 @@
-!function(){"use strict";console.log("Hello, World")}();
+!function(){"use strict";window.addEventListener("DOMContentLoaded",(function(e){TagCanvas.Start("myCanvas","",{depth:1.1,fadeIn:3e3,freezeActive:!0,freezeDecel:!0,initial:[.3,-.1],maxSpeed:.06,noSelect:!0,shuffleTags:!0,shape:"sphere",textColour:"#000000",textFont:null,zoom:.8,pinchZoom:!0,wheelZoom:!1})}),!1)}();
 //# sourceMappingURL=main.js.map

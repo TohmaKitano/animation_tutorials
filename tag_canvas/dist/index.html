@@ -7,60 +7,38 @@
   </head>
   <body>
     <h1>TagCanvas example page</h1>
-    <div id="myCanvasContainer">
+    <div id="myCanvasContainer" class="myCanvasContainer">
       <canvas width="500" height="500" id="myCanvas">
         <ul>
-          <li><a data-weight="25" href="https://en.wikipedia.org/wiki/HTML" target="_blank">HTML</a></li>
-          <li><a data-weight="25" href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets" target="_blank">CSS</a></li>
-          <li><a data-weight="25" href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">ES5/ES6</a></li>
-          <li><a data-weight="25" href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">TypeScript</a></li>
-          <li><a data-weight="24" href="https://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST</a></li>
-          <li><a data-weight="14" href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a></li>
-          <li><a data-weight="13" href="https://en.wikipedia.org/wiki/XML" target="_blank">GSAP</a></li>
-          <li><a data-weight="14" href="https://en.wikipedia.org/wiki/Data_science" target="_blank">Data Science</a></li>
-          <li><a data-weight="26" href="https://en.wikipedia.org/wiki/WordPress" target="_blank">Wordpress</a></li>
-          <li><a data-weight="26" href="https://en.wikipedia.org/wiki/PHP" target="_blank">PHP</a></li>
-          <li><a data-weight="26" href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank">Python</a></li>
-          <li><a data-weight="21" href="https://en.wikipedia.org/wiki/Node.js" target="_blank">Node JS</a></li>
-          <li><a data-weight="17" href="https://en.wikipedia.org/wiki/Git" target="_blank">Git</a></li>
-          <li><a data-weight="17" href="" target="_blank">_lodash</a></li>
-          <li><a data-weight="23" href="https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)" target="_blank">Bootstrap</a></li>
-          <li><a data-weight="15" href="https://en.wikipedia.org/wiki/Sass_(stylesheet_language)" target="_blank">SASS</a></li>
-          <li><a data-weight="24" href="https://reactjs.org/" target="_blank">ReactJS</a></li>
-          <li><a data-weight="12" href="https://en.wikipedia.org/wiki/JQuery" target="_blank">jQuery</a></li>
-          <li><a data-weight="26" href="http://mongoosejs.com/" target="_blank">SQl</a></li>
-          <li><a data-weight="19" href="http://gulpjs.com/" target="_blank">Gulp</a></li>
-          <li><a data-weight="19" href="https://www.npmjs.com/" target="_blank">npm</a></li>
-          <li><a data-weight="19" href="https://en.wikipedia.org/wiki/BEM" target="_blank">BEM</a></li>
+          <li><a data-weight="24" href="https://ja.wikipedia.org/wiki/HyperText_Markup_Language" target="_blank">HTML</a></li>
+          <li><a data-weight="24" href="https://ja.wikipedia.org/wiki/CSS" target="_blank">CSS</a></li>
+          <li><a data-weight="20" href="https://ja.wikipedia.org/wiki/Sass" target="_blank">Sass</a></li>
+          <li><a data-weight="24" href="https://ja.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a></li>
+          <li><a data-weight="24" href="https://ja.wikipedia.org/wiki/JavaScript" target="_blank">ES5/ES6</a></li>
+          <li><a data-weight="24" href="https://ja.wikipedia.org/wiki/JQuery" target="_blank">jQuery</a></li>
+          <li><a data-weight="20" href="https://ja.wikipedia.org/wiki/Node.js" target="_blank">Node.js</a></li>
+          <li><a data-weight="20" href="https://ja.wikipedia.org/wiki/Vue.js" target="_blank">Vue.js</a></li>
+          <li><a data-weight="20" href="https://ja.wikipedia.org/wiki/Nuxt.js" target="_blank">Nuxt.js</a></li>
+          <li><a data-weight="20" href="#" target="_blank">Gulp.js</a></li>
+          <li><a data-weight="20" href="https://ja.wikipedia.org/wiki/JavaScript_Object_Notation" target="_blank">JSON</a></li>
+          <li><a data-weight="16" href="#" target="_blank">GSAP</a></li>
+          <li><a data-weight="16" href="https://ja.wikipedia.org/wiki/Google_Apps_Script" target="_blank">Google Apps Script</a></li>
+          <li><a data-weight="16" href="#" target="_blank">JAM STACK</a></li>
+          <li><a data-weight="12" href="https://ja.wikipedia.org/wiki/Webpack" target="_blank">webpack</a></li>
+          <li><a data-weight="24" href="https://ja.wikipedia.org/wiki/WordPress" target="_blank">WordPress</a></li>
+          <li><a data-weight="24" href="https://ja.wikipedia.org/wiki/Movable_Type" target="_blank">Movable Type</a></li>
+          <li><a data-weight="20" href="hhttps://ja.wikipedia.org/wiki/PHP_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E)" target="_blank">PHP</a></li>
+          <li><a data-weight="16" href="https://ja.wikipedia.org/wiki/Ruby" target="_blank">Ruby</a></li>
+          <li><a data-weight="16" href="https://ja.wikipedia.org/wiki/Ruby_on_Rails" target="_blank">Ruby on Rails</a></li>
+          <li><a data-weight="26" href="https://ja.wikipedia.org/wiki/SQL" target="_blank">SQL</a></li>
+          <li><a data-weight="20" href="https://ja.wikipedia.org/wiki/Git" target="_blank">Git</a></li>
+          <li><a data-weight="16" href="hhttps://ja.wikipedia.org/wiki/Docker" target="_blank">Docker</a></li>
+          <li><a data-weight="12" href="https://ja.wikipedia.org/wiki/Python" target="_blank">Python</a></li>
         </ul>
       </canvas>
     </div>
 
     <script src="./assets/js/tagcanvas.js"></script>
-    <script type="text/javascript">
-      window.addEventListener('load', (e) => {
-        let options = {
-          textColour : '#08FDD8',
-          outlineThickness : 0.5,
-          outlineColour : '#FE0853',
-          maxSpeed : 0.06,
-          freezeActive:true,
-          shuffleTags:true,
-          shape:'sphere',
-          zoom:0.8,
-          noSelect:true,
-          textFont:null,
-          pinchZoom:true,
-          wheelZoom:false,
-          freezeDecel:true,
-          fadeIn:3000,
-          initial: [0.3,-0.1],
-          depth : 1.1
-        }
-        TagCanvas.Start('myCanvas', '', options);
-
-      }, false);
-    </script>
     <script src="./assets/js/vendor.js"></script>
     <script src="./assets/js/main.js"></script>
   </body>
