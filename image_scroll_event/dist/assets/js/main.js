@@ -1,0 +1,2 @@
+!function(){"use strict";var e=document.querySelector(".p-top-join__links"),o=Array.from(e.querySelectorAll(".item:not(.is-visible)"));console.log(o),new IntersectionObserver((function(){o.forEach((function(e){gsap.delayedCall(1,(function(){e.classList.add("is-visible")}))}))}),{rootMargin:"0px 0px -20% 0px"}).observe(e)}();
+//# sourceMappingURL=main.js.map
