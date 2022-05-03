@@ -1,2 +1,2 @@
-!function(){"use strict";var e=document.querySelector(".p-top-join__links"),o=Array.from(e.querySelectorAll(".item:not(.is-visible)"));console.log(o),new IntersectionObserver((function(){o.forEach((function(e){gsap.delayedCall(1,(function(){e.classList.add("is-visible")}))}))}),{rootMargin:"0px 0px -20% 0px"}).observe(e)}();
+!function(){"use strict";var e=document.querySelector(".p-top-join__links"),t=Array.from(e.querySelectorAll(".item:not(.is-visible)"));gsap.to(t,{ease:Power3.easeOut,stagger:{amount:.3,onComplete:function(){this.targets()[0].classList.add("is-visible")}}})}();
 //# sourceMappingURL=main.js.map
