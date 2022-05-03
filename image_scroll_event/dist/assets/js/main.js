@@ -1,2 +1,2 @@
-!function(){"use strict";var e=document.querySelector(".p-top-join__links"),t=Array.from(e.querySelectorAll(".item:not(.is-visible)"));gsap.to(t,{ease:Power3.easeOut,stagger:{amount:.3,onComplete:function(){this.targets()[0].classList.add("is-visible")}}})}();
+!function(){"use strict";var e,t=document.querySelector(".item-wrapper");e=Array.from(t.querySelectorAll(".item:not(.is-visible)")),gsap.to(e,{ease:Power3.easeOut,stagger:{amount:.3,onComplete:function(){this.targets()[0].classList.add("is-visible")}}})}();
 //# sourceMappingURL=main.js.map
